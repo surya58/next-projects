@@ -1,16 +1,13 @@
 export interface SignupData {
-  // Personal Information
   fullName: string;
   email: string;
   phone: string;
   
-  // Address Information
   streetAddress: string;
   city: string;
   state: string;
   postalCode: string;
   
-  // Profile Information
   bio: string;
 }
 
