@@ -1,4 +1,4 @@
-import { SignupData } from '../types/signup';
+import { SignupData } from '../app/types/signup';
 
 interface ConfirmationCardProps {
   data: SignupData;

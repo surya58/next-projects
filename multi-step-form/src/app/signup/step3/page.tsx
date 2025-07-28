@@ -2,8 +2,8 @@
 
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { StepIndicator } from '../../components/StepIndicator';
-import { ConfirmationCard } from '../../components/ConfirmationCard';
+import { StepIndicator } from '@/components/StepIndicator';
+import { ConfirmationCard } from '@/components/ConfirmationCard';
 import { useSignupForm } from '../../hooks/useSignupForm';
 
 export default function Step3() {

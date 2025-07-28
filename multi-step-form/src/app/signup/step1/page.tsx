@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { TextField } from '../../components/TextField';
-import { StepIndicator } from '../../components/StepIndicator';
+import { TextField } from '@/components/TextField';
+import { StepIndicator } from '@/components/StepIndicator';
 import { useSignupForm } from '../../hooks/useSignupForm';
 import { ValidationErrors } from '../../types/signup';
 

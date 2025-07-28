@@ -1,13 +1,13 @@
 "use client";
 import { useState } from "react";
 import TodoList from "./TodoList";
-import { Button } from "../../components/ui/button";
+import { Button } from "../components/ui/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../components/ui/card";
+} from "../components/ui/card";
 
 interface Task {
   id: number;
