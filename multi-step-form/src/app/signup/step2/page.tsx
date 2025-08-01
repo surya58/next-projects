@@ -3,7 +3,9 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { TextField } from '@/components/TextField';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 import { StepIndicator } from '@/components/StepIndicator';
 import { useSignupForm } from '../../hooks/useSignupForm';
 import { ValidationErrors } from '../../types/signup';
@@ -14,7 +16,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Label } from '@/components/ui/label';
 
 export default function Step2() {
   const router = useRouter();
@@ -57,24 +58,40 @@ export default function Step2() {
       </div>
 
       <div className="space-y-4 mb-8">
-        <TextField
-          label="Street Address"
-          value={data.streetAddress}
-          onChange={(value) => updateData('streetAddress', value)}
-          placeholder="Enter your street address"
-          error={errors.streetAddress}
-          required
-        />
+        <div className="space-y-2">
+          <Label htmlFor="streetAddress" className="text-sm font-medium">
+            Street Address <span className="text-red-500 ml-1">*</span>
+          </Label>
+          <Input
+            id="streetAddress"
+            type="text"
+            value={data.streetAddress}
+            onChange={(e) => updateData('streetAddress', e.target.value)}
+            placeholder="Enter your street address"
+            className={errors.streetAddress ? 'border-red-500' : ''}
+          />
+          {errors.streetAddress && (
+            <p className="text-sm text-red-500">{errors.streetAddress}</p>
+          )}
+        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <TextField
-            label="City"
-            value={data.city}
-            onChange={(value) => updateData('city', value)}
-            placeholder="Enter your city"
-            error={errors.city}
-            required
-          />
+          <div className="space-y-2">
+            <Label htmlFor="city" className="text-sm font-medium">
+              City <span className="text-red-500 ml-1">*</span>
+            </Label>
+            <Input
+              id="city"
+              type="text"
+              value={data.city}
+              onChange={(e) => updateData('city', e.target.value)}
+              placeholder="Enter your city"
+              className={errors.city ? 'border-red-500' : ''}
+            />
+            {errors.city && (
+              <p className="text-sm text-red-500">{errors.city}</p>
+            )}
+          </div>
           
           <div className="space-y-2">
             <Label className="text-sm font-medium">
@@ -98,22 +115,35 @@ export default function Step2() {
           </div>
         </div>
         
-        <TextField
-          label="Postal Code"
-          value={data.postalCode}
-          onChange={(value) => updateData('postalCode', value)}
-          placeholder="Enter your postal code"
-          error={errors.postalCode}
-          required
-        />
+        <div className="space-y-2">
+          <Label htmlFor="postalCode" className="text-sm font-medium">
+            Postal Code <span className="text-red-500 ml-1">*</span>
+          </Label>
+          <Input
+            id="postalCode"
+            type="text"
+            value={data.postalCode}
+            onChange={(e) => updateData('postalCode', e.target.value)}
+            placeholder="Enter your postal code"
+            className={errors.postalCode ? 'border-red-500' : ''}
+          />
+          {errors.postalCode && (
+            <p className="text-sm text-red-500">{errors.postalCode}</p>
+          )}
+        </div>
         
-        <TextField
-          label="Bio/Profile Information"
-          type="textarea"
-          value={data.bio}
-          onChange={(value) => updateData('bio', value)}
-          placeholder="Tell us a bit about yourself..."
-        />
+        <div className="space-y-2">
+          <Label htmlFor="bio" className="text-sm font-medium">
+            Bio/Profile Information
+          </Label>
+          <Textarea
+            id="bio"
+            value={data.bio}
+            onChange={(e) => updateData('bio', e.target.value)}
+            placeholder="Tell us a bit about yourself..."
+            rows={4}
+          />
+        </div>
       </div>
 
       <div className="flex justify-between">

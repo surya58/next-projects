@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { TextField } from '@/components/TextField';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { StepIndicator } from '@/components/StepIndicator';
 import { useSignupForm } from '../../hooks/useSignupForm';
 import { ValidationErrors } from '../../types/signup';
@@ -32,34 +33,56 @@ export default function Step1() {
       </div>
 
       <div className="space-y-4 mb-8">
-        <TextField
-          label="Full Name"
-          value={data.fullName}
-          onChange={(value) => updateData('fullName', value)}
-          placeholder="Enter your full name"
-          error={errors.fullName}
-          required
-        />
+        <div className="space-y-2">
+          <Label htmlFor="fullName" className="text-sm font-medium">
+            Full Name <span className="text-red-500 ml-1">*</span>
+          </Label>
+          <Input
+            id="fullName"
+            type="text"
+            value={data.fullName}
+            onChange={(e) => updateData('fullName', e.target.value)}
+            placeholder="Enter your full name"
+            className={errors.fullName ? 'border-red-500' : ''}
+          />
+          {errors.fullName && (
+            <p className="text-sm text-red-500">{errors.fullName}</p>
+          )}
+        </div>
         
-        <TextField
-          label="Email Address"
-          type="email"
-          value={data.email}
-          onChange={(value) => updateData('email', value)}
-          placeholder="Enter your email address"
-          error={errors.email}
-          required
-        />
+        <div className="space-y-2">
+          <Label htmlFor="email" className="text-sm font-medium">
+            Email Address <span className="text-red-500 ml-1">*</span>
+          </Label>
+          <Input
+            id="email"
+            type="email"
+            value={data.email}
+            onChange={(e) => updateData('email', e.target.value)}
+            placeholder="Enter your email address"
+            className={errors.email ? 'border-red-500' : ''}
+          />
+          {errors.email && (
+            <p className="text-sm text-red-500">{errors.email}</p>
+          )}
+        </div>
         
-        <TextField
-          label="Phone Number"
-          type="tel"
-          value={data.phone}
-          onChange={(value) => updateData('phone', value)}
-          placeholder="Enter your phone number"
-          error={errors.phone}
-          required
-        />
+        <div className="space-y-2">
+          <Label htmlFor="phone" className="text-sm font-medium">
+            Phone Number <span className="text-red-500 ml-1">*</span>
+          </Label>
+          <Input
+            id="phone"
+            type="tel"
+            value={data.phone}
+            onChange={(e) => updateData('phone', e.target.value)}
+            placeholder="Enter your phone number"
+            className={errors.phone ? 'border-red-500' : ''}
+          />
+          {errors.phone && (
+            <p className="text-sm text-red-500">{errors.phone}</p>
+          )}
+        </div>
       </div>
 
       <div className="flex justify-end">
